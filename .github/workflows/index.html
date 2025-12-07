@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV AI Bot - সম্পূর্ণ ফ্রি</title>
+    <meta name="description" content="ফ্রি CV AI Bot তৈরি করুন, কোনো API কী ছাড়াই। বাংলাদেশী ফরম্যাটে CV তৈরি করুন।">
+    <meta name="keywords" content="CV, রেজুমে, AI, ফ্রি, বাংলাদেশ, চাকরি, CV তৈরি">
+    <meta name="author" content="Md. Shihab Hossain">
+    
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="CV AI Bot - সম্পূর্ণ ফ্রি">
+    <meta property="og:description" content="ফ্রি CV AI Bot তৈরি করুন, কোনো API কী ছাড়াই">
+    <meta property="og:image" content="https://yourusername.github.io/cv-ai-bot/assets/og-image.png">
+    <meta property="og:url" content="https://yourusername.github.io/cv-ai-bot">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('sw.js').then(function(registration) {
+                    console.log('ServiceWorker registered');
+                }, function(err) {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+    </script>
+    
+    <!-- Google Analytics (Optional) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i class="fas fa-robot"></i>
+                <span>CV AI Bot</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">হোম</a>
+                <a href="#features" class="nav-link">ফিচার</a>
+                <a href="#create" class="nav-link">CV তৈরি</a>
+                <a href="#templates" class="nav-link">টেমপ্লেট</a>
+                <a href="#about" class="nav-link">সম্পর্কে</a>
+            </div>
+            <div class="nav-actions">
+                <button class="btn-start" onclick="startCreatingCV()">
+                    <i class="fas fa-play"></i> শুরু করুন
+                </button>
+            </div>
+            <button class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">আপনার CV তৈরি করুন <span class="highlight">AI</span> এর সাহায্যে</h1>
+                <p class="hero-subtitle">সম্পূর্ণ ফ্রি • কোনো API কী প্রয়োজন নেই • বাংলাদেশী ফরম্যাট</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <i class="fas fa-users"></i>
+                        <span class="stat-number">১০০০+</span>
+                        <span class="stat-label">ব্যবহারকারী</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-file-alt"></i>
+                        <span class="stat-number">৫০০০+</span>
+                        <span class="stat-label">CV তৈরি</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span class="stat-number">৪.৯</span>
+                        <span class="stat-label">রেটিং</span>
+                    </div>
+                </div>
+                
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="startCreatingCV()">
+                        <i class="fas fa-plus"></i> CV তৈরি শুরু করুন
+                    </button>
+                    <button class="btn-secondary" onclick="showTemplates()">
+                        <i class="fas fa-eye"></i> টেমপ্লেট দেখুন
+                    </button>
+                </div>
+                
+                <div class="hero-note">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>আপনার ডাটা সম্পূর্ণ নিরাপদ • কোনো ডাটা সংগ্রহ করা হয় না</span>
+                </div>
+            </div>
+            
+            <div class="hero-preview">
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <div class="preview-avatar">SH</div>
+                        <div class="preview-info">
+                            <h3>Md. Shihab Hossain</h3>
+                            <p>অফিস সহকারী</p>
+                        </div>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>সিরাজগঞ্জ, রাজশাহী</span>
+                        </div>
+                        <div class="preview-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>shihab@example.com</span>
+                        </div>
+                        <div class="preview-item">
+                            <i class="fas fa-phone"></i>
+                            <span>০১৩********</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">আমাদের বিশেষ <span class="highlight">ফিচার</span></h2>
+            <p class="section-subtitle">কেন আমাদের CV AI Bot ব্যবহার করবেন</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>ফাস্ট এন্ড ফ্রি</h3>
+                    <p>কোনো খরচ নেই। মাত্র ৫ মিনিটে CV তৈরি করুন। কোনো রেজিস্ট্রেশন প্রয়োজন নেই।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI সহায়তা</h3>
+                    <p>AI আপনার CV কন্টেন্ট উন্নত করবে। স্বয়ংক্রিয় পরামর্শ এবং অপ্টিমাইজেশন।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    <h3>বহু ফরম্যাট</h3>
+                    <p>PDF, Word, TXT ফরম্যাটে ডাউনলোড করুন। প্রিন্ট ফ্রেন্ডলি টেমপ্লেট।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>মোবাইল ফ্রেন্ডলি</h3>
+                    <p>সব ডিভাইসে সম্পূর্ণ কাজ করে। অফলাইন সাপোর্ট (PWA)।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>নিরাপদ</h3>
+                    <p>আপনার ডাটা আপনার ব্রাউজারে থাকে। কোনো সার্ভারে ডাটা যায় না।</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3>বাংলা সাপোর্ট</h3>
+                    <p>সম্পূর্ণ বাংলা ইন্টারফেস। বাংলাদেশী CV ফরম্যাট সাপোর্ট।</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Creator Section -->
+    <section class="creator" id="create">
+        <div class="container">
+            <h2 class="section-title">CV তৈরি করুন <span class="highlight">এখনই</span></h2>
+            <p class="section-subtitle">৫টি সহজ ধাপে আপনার CV তৈরি করুন</p>
+            
+            <div class="creator-container">
+                <div class="creator-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-number">১</div>
+                        <div class="step-content">
+                            <h3>ব্যক্তিগত তথ্য</h3>
+                            <p>আপনার নাম, যোগাযোগ তথ্য</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-step="2">
+                        <div class="step-number">২</div>
+                        <div class="step-content">
+                            <h3>শিক্ষাগত যোগ্যতা</h3>
+                            <p>আপনার শিক্ষার তথ্য</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-step="3">
+                        <div class="step-number">৩</div>
+                        <div class="step-content">
+                            <h3>কাজের অভিজ্ঞতা</h3>
+                            <p>পেশাদার অভিজ্ঞতা</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-step="4">
+                        <div class="step-number">৪</div>
+                        <div class="step-content">
+                            <h3>দক্ষতা</h3>
+                            <p>প্রযুক্তিগত ও নরম স্কিল</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step" data-step="5">
+                        <div class="step-number">৫</div>
+                        <div class="step-content">
+                            <h3>ডাউনলোড</h3>
+                            <p>CV ডাউনলোড ও শেয়ার</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-form">
+                    <div id="step-1" class="form-step active">
+                        <h3>আপনার ব্যক্তিগত তথ্য</h3>
+                        <div class="form-group">
+                            <label for="name">পূর্ণ নাম *</label>
+                            <input type="text" id="name" placeholder="Md. Shihab Hossain" value="Md. Shihab Hossain">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ইমেইল *</label>
+                            <input type="email" id="email" placeholder="shihab@example.com" value="shihab@example.com">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">ফোন নম্বর</label>
+                                <input type="tel" id="phone" placeholder="013********" value="013********">
+                            </div>
+                            <div class="form-group">
+                                <label for="location">অবস্থান</label>
+                                <input type="text" id="location" placeholder="সিরাজগঞ্জ, রাজশাহী" value="সিরাজগঞ্জ, রাজশাহী">
+                            </div>
+                        </div>
+                        <button class="btn-next" onclick="nextStep()">পরবর্তী <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Section -->
+    <section class="templates" id="templates">
+        <div class="container">
+            <h2 class="section-title">CV <span class="highlight">টেমপ্লেট</span></h2>
+            <p class="section-subtitle">পছন্দের টেমপ্লেট নির্বাচন করুন</p>
+            
+            <div class="templates-grid">
+                <div class="template-card" onclick="selectTemplate('modern')">
+                    <div class="template-preview modern-template"></div>
+                    <div class="template-info">
+                        <h3>মডার্ন</h3>
+                        <p>সবচেয়ে জনপ্রিয়</p>
+                        <button class="btn-template">বাছাই করুন</button>
+                    </div>
+                </div>
+                
+                <div class="template-card" onclick="selectTemplate('professional')">
+                    <div class="template-preview professional-template"></div>
+                    <div class="template-info">
+                        <h3>প্রফেশনাল</h3>
+                        <p>ব্যবসায়িক স্টাইল</p>
+                        <button class="btn-template">বাছাই করুন</button>
+                    </div>
+                </div>
+                
+                <div class="template-card" onclick="selectTemplate('creative')">
+                    <div class="template-preview creative-template"></div>
+                    <div class="template-info">
+                        <h3>ক্রিয়েটিভ</h3>
+                        <p>রঙিন ও আকর্ষণীয়</p>
+                        <button class="btn-template">বাছাই করুন</button>
+                    </div>
+                </div>
+                
+                <div class="template-card" onclick="selectTemplate('simple')">
+                    <div class="template-preview simple-template"></div>
+                    <div class="template-info">
+                        <h3>সিম্পল</h3>
+                        <p>সরল ও কার্যকরী</p>
+                        <button class="btn-template">বাছাই করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <h3>CV AI Bot</h3>
+                    <p>ফ্রি CV তৈরি করুন AI এর সাহায্যে</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>লিংক</h4>
+                    <a href="#home">হোম</a>
+                    <a href="#features">ফিচার</a>
+                    <a href="#create">CV তৈরি</a>
+                    <a href="#templates">টেমপ্লেট</a>
+                    <a href="#about">সম্পর্কে</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>যোগাযোগ</h4>
+                    <p><i class="fas fa-envelope"></i> shihab@example.com</p>
+                    <p><i class="fas fa-phone"></i> 013********</p>
+                    <p><i class="fas fa-map-marker-alt"></i> সিরাজগঞ্জ, রাজশাহী</p>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>সামাজিক যোগাযোগ</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; ২০২৪ CV AI Bot. সকল অধিকার সংরক্ষিত।</p>
+                <p>GitHub Pages-এ হোস্টকৃত | সম্পূর্ণ ফ্রি সার্ভিস</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- PWA Service Worker -->
+    <script>
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('SW registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('SW registration failed:', error);
+                    });
+            });
+        }
+        
+        // Offline status check
+        window.addEventListener('online', () => {
+            showNotification('ইন্টারনেট সংযোগ পুনরুদ্ধার হয়েছে');
+        });
+        
+        window.addEventListener('offline', () => {
+            showNotification('আপনি অফলাইনে আছেন। কিছু ফিচার কাজ নাও করতে পারে।');
+        });
+        
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <i class="fas fa-info-circle"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
